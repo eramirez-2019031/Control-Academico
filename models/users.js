@@ -18,7 +18,7 @@ const UserSchema = Schema({
 
     role:{
         type: String,
-        enum: ["TEACHER_ROLE", "USER_ROLE"], //Tipos de roles que se pueden dar a un usuario.
+        enum: ["TEACHER_ROLE", "STUDENT_ROLE"], 
     }
 
 });
