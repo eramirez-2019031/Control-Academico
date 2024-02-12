@@ -3,7 +3,7 @@ const { Schema, model} = require('mongoose');
 const ProfesorSchema = Schema({
     nombre: {
         type: String,
-        required: [true, 'El nombre de la profesor es obligatorio']
+        required: [true, 'El nombre del profesor es obligatorio']
     },
 
     curso: {
@@ -23,4 +23,4 @@ const ProfesorSchema = Schema({
 
 });
 
-module.exports = model("Mascota", ProfesorSchema);
+module.exports = model("Profesor", ProfesorSchema);
