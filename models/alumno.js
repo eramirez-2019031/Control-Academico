@@ -6,20 +6,32 @@ const AlumnoSchema = Schema({
         required: [true, 'El nombre del alumno es obligatorio']
     },
 
-    grado: {
+    correo: {
         type: String,
-        required: [true, 'El Grado debe ser obligatorio']
+        required: [true, 'el correo es obligatorio'],
+        unique: true
     },
 
-    seccion: {
+    password:{
         type: String,
-        required: [true, 'la seccion del alumno es obligatoria']
+        require: [true, 'la  contraseña es obligatoria']
+    },
+
+    role:{
+        type: String,
+        requier: true,
+        enum: ["STUDENT_ROLE"]
     },
 
     curso: {
         type: String,
         required: [true, 'el curso es obligatorio']
     },
+
+    estado:{
+        type: Boolean,
+        default: true
+    }
 
     
 
