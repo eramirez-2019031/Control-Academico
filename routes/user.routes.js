@@ -3,35 +3,57 @@ const { check } = require('express-validator');
 
 const { validarCampos } = require('../middlewares/validar-campos');
 
-const { existenteCorreo, existeUserById} = require('../helpers/db-validators');
+const { emailExists, userExistsById } = require('../helpers/db-validators');
 
-const {userPut, userPost, userGet } = require('../controllers/user.controller');
-
+const {
+  userPost,
+  userGet,
+  userPut,
+  userDelete,
+  userGetById,
+} = require('../controllers/user.controller');
 
 const router = Router();
 
 router.post(
-    "/", 
-    [
-        check("nombreU","El nombre es obligatorio").not().isEmpty(),
-        check("passwordU","El password debe ser mayor a 6 caracteres").isLength({min: 6,}),
-        check("correoU","Este no es un correo válido").isEmail(),
-        check("correoU").custom(existenteCorreo),
-        check("Cursos").not().isEmpty(),
-        check("role").not().isEmpty(),
-        validarCampos,
-    ], userPost); 
+  '/',
+  [
+    check('name', 'The name is required').not().isEmpty(),
+    check(
+      'password',
+      'The password must be greater than 6 characters'
+    ).isLength({
+      min: 6,
+    }),
+    check('email', 'This is not a valid email').isEmail(),
+    check('email').custom(emailExists),
+    check('role'),
+    check('course', 'The course is required').not().isEmpty(),
+    validarCampos,
+  ],
+  userPost
+);
 
+router.get('/', userGet);
 
-router.get("/", userGet);
+router.get(
+  '/:id',
+  [
+    check('id', 'Invalid id').isMongoId(),
+    check('id').custom(userExistsById),
+    validarCampos,
+  ],
+  userGet
+);
 
 router.put(
-    "/:id",
-    [
-        check("id","El id no es un formato válido de MongoDB").isMongoId(),
-        check("id").custom(existeUserById),
-        validarCampos
-    ], userPut);
-
+  '/:id',
+  [
+    check('id', 'Invalid id').isMongoId(),
+    check('id').custom(userExistsById),
+    validarCampos,
+  ],
+  userPut
+);
 
 module.exports = router;

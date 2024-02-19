@@ -1,0 +1,12 @@
+[{
+  "_id": {
+    "$oid": "65c28d5ff5678738b93a6192"
+  },
+  "role": "TEACHER_ROLE"
+},
+{
+  "_id": {
+    "$oid": "65c28d79f5678738b93a6194"
+  },
+  "role": "STUDENT_ROLE"
+}]
