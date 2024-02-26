@@ -1,35 +1,45 @@
-const { User, Course } = require('../models/user');
+const Usuario = require('../models/user');
+const Curso = require('../models/cursos')
 
-const emailExists = async (email = '') => {
-  const emailUser = await User.findOne({ email });
-  if (emailUser) {
-    throw new Error(`The email ${email} already exists`);
-  }
-};
+const existenteEmail = async (email = '') => {
+    const existeEmail = await Usuario.findOne({email});
+    if(existeEmail){
+        throw new Error(`El email ${ email } ya fue registrado`);
+    }
+}
 
-const userExistsById = async (id = '') => {
-  const user = await User.findOne({ id });
+const noExistenteEmail = async (email = '') => {
+    const existeEmail = await Usuario.findOne({email});
+    if(!existeEmail){
+        throw new Error(`El email ${ email } no existe`);
+    }
+}
 
-  if (!user) {
-    throw new Error(`The user with the id ${id} does not exist`);
-  }
-};
+const existeUsuarioById = async ( id = '') => {
+    const existeUsuario = await Usuario.findOne({id});
+    if(existeUsuario){
+        throw new Error(`El usuario con el id: ${ id } no existe`);
+    }
+}
 
-const courseNameExists = async (name = '') => {
-  const course = await Course.findOne({ name });
-  if (course) {
-    throw new Error(`The course name ${name} already exists`);
-  }
-};
+const existeCursoById = async ( id = '') => {
+    const existeCurso = await Curso.findOne({id});
+    if(existeCurso){
+        throw new Error(`El curso con el id: ${ id } no existe`);
+    }
+}
 
-const courseExistsById = async (id = '') => {
-  const course = await Course.findById(id);
-  if (!course) {
-    throw new Error(`The course with id ${id} does not exist`);
-  }
-};
+const existeCursoByNombre = async ( nombre = '') => {
+    const existeCurso = await Curso.findOne({nombre});
+    if(existeCurso){
+        throw new Error(`El curso con el nombre: ${ nombre } ya existe`);
+    }
+}
 
 module.exports = {
-  emailExists,
-  userExistsById,
-};
+    existenteEmail,
+    existeUsuarioById,
+    existeCursoById,
+    noExistenteEmail,
+    existeCursoByNombre
+}

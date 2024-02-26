@@ -7,11 +7,14 @@ class Server{
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
-
-        this.usersPath = '/api/users';
+        this.usuariosPath = '/api/usuarios';
+        this.cursosPath = '/api/cursos';
+        this.estudiantesPath = '/api/Asigancion_estudiantes';
 
         this.conectarDB();
+
         this.middlewares();
+
         this.routes();
     }
 
@@ -25,9 +28,11 @@ class Server{
         this.app.use(express.json());
     }
 
-    routes() {
-        this.app.use(this.usersPath, require('../routes/user.routes'));
-      }
+    routes(){
+        this.app.use(this.usuariosPath, require('../routes/user.routes'));
+        this.app.use(this.cursosPath, require('../routes/curso.routes'));
+        this.app.use(this.estudiantesPath, require('../routes/usuario-curso.routes'));
+    }
 
     listen(){
         this.app.listen(this.port, () => {

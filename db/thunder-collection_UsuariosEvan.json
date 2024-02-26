@@ -1,0 +1,75 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "UsuariosEvan",
+    "dateExported": "2024-02-26T04:50:44.619Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "4826e99b-6721-402b-af99-215b6d06717c",
+            "colId": "4ac48c13-5b48-4b4b-a3b3-e2d729ad33b0",
+            "containerId": "",
+            "name": "postUsuario",
+            "url": "http://localhost:3000/api/usuarios",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-26T03:48:44.053Z",
+            "modified": "2024-02-26T03:51:10.767Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"ansis\",\n  \"email\":\"ANSIS@email.com\",\n  \"contra\":\"12345678\",\n  \"rol\":\"TEACHER_ROL\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f6af0ff2-d82e-4302-936d-0b72ee46a7ce",
+            "colId": "4ac48c13-5b48-4b4b-a3b3-e2d729ad33b0",
+            "containerId": "",
+            "name": "getUsuarios",
+            "url": "http://localhost:3000/api/usuarios",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-26T03:48:44.054Z",
+            "modified": "2024-02-26T03:48:44.054Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3f024345-1481-4fcc-ba3e-1126d8f04121",
+            "colId": "4ac48c13-5b48-4b4b-a3b3-e2d729ad33b0",
+            "containerId": "",
+            "name": "loginUsuario",
+            "url": "http://localhost:3000/api/usuarios/login",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-02-26T03:48:44.056Z",
+            "modified": "2024-02-26T03:48:44.056Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"braulio123@email.com\",\n  \"contra\":\"1234567\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "39d0c5b9-1c7c-4dc6-83ee-97fc53f4e2a1",
+            "colId": "4ac48c13-5b48-4b4b-a3b3-e2d729ad33b0",
+            "containerId": "",
+            "name": "deleteUsuario",
+            "url": "http://localhost:3000/api/usuarios/65dc069570ce62664587d0d5",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-02-26T03:48:44.057Z",
+            "modified": "2024-02-26T03:48:44.057Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

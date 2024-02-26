@@ -2,58 +2,56 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 
 const { validarCampos } = require('../middlewares/validar-campos');
+const { existenteEmail, existeUsuarioById } = require('../helpers/db-validators');
 
-const { emailExists, userExistsById } = require('../helpers/db-validators');
-
-const {
-  userPost,
-  userGet,
-  userPut,
-  userDelete,
-  userGetById,
-} = require('../controllers/user.controller');
+const { usuarioPost, usuarioGet, getUsuarioByid, usuarioPut, usuarioDelete, usuarioLogin } = require('../controllers/users.controller');
 
 const router = Router();
 
-router.post(
-  '/',
-  [
-    check('name', 'The name is required').not().isEmpty(),
-    check(
-      'password',
-      'The password must be greater than 6 characters'
-    ).isLength({
-      min: 6,
-    }),
-    check('email', 'This is not a valid email').isEmail(),
-    check('email').custom(emailExists),
-    check('role'),
-    check('course', 'The course is required').not().isEmpty(),
-    validarCampos,
-  ],
-  userPost
-);
-
-router.get('/', userGet);
+router.get("/", usuarioGet);
 
 router.get(
-  '/:id',
-  [
-    check('id', 'Invalid id').isMongoId(),
-    check('id').custom(userExistsById),
-    validarCampos,
-  ],
-  userGet
-);
+    "/:id",
+    [
+        check("id", "El id no es un formato válido de MongoDB").isMongoId(),
+        check("id").custom(existeUsuarioById),
+        validarCampos
+    ], getUsuarioByid);
 
 router.put(
-  '/:id',
-  [
-    check('id', 'Invalid id').isMongoId(),
-    check('id').custom(userExistsById),
-    validarCampos,
-  ],
-  userPut
-);
+    "/:id",
+    [
+        check("id", "El id no es un formato válido de MongoDB").isMongoId(),
+        check("id").custom(existeUsuarioById),
+        validarCampos
+    ], usuarioPut);
+
+router.delete(
+    "/:id",
+    [
+        check("id", "El id no es un formato válido de MongoDB").isMongoId(),
+        check("id").custom(existeUsuarioById),
+        validarCampos
+    ], usuarioDelete);
+
+
+router.post(
+    "/",
+    [
+        check("nombre", "El nombre es obligatorio").not().isEmpty(),
+        check("contra", "La contraseña debe tener más de 6 digitos").isLength({ min: 6, }),
+        check("email", "El email debe ser un email").isEmail(),
+        check("email").custom(existenteEmail),
+        validarCampos,
+    ], usuarioPost);
+
+router.post(
+    "/login",
+    [
+        check('email', 'Este correo no es aceptado, pruebe otro').isEmail(),
+        check('contra', 'la contraseña es obligatoria').not().isEmpty(),
+        validarCampos,
+    ],
+    usuarioLogin);
 
 module.exports = router;

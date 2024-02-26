@@ -1,0 +1,80 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "cursosEvan",
+    "dateExported": "2024-02-26T04:57:27.158Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "6c3cb048-9e3d-4fcc-aeae-4dfdcd180889",
+            "colId": "97cb1a55-3b45-480b-9079-dce5d283de27",
+            "containerId": "",
+            "name": "postCursos",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-26T03:53:19.280Z",
+            "modified": "2024-02-26T04:05:10.584Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"matematicas\",\n  \"clase\":\"Mate\",\n  \"maestro\":\"braulio123@email.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5f80d01f-4935-48bb-ac40-a2de870de1c9",
+            "colId": "97cb1a55-3b45-480b-9079-dce5d283de27",
+            "containerId": "",
+            "name": "getCursos",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-26T03:53:53.309Z",
+            "modified": "2024-02-26T03:53:53.309Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "21fa3ff1-d5a9-480e-b740-d4936287f2ce",
+            "colId": "97cb1a55-3b45-480b-9079-dce5d283de27",
+            "containerId": "",
+            "name": "putCursos",
+            "url": "http://localhost:3000/api/cursos/65dc0b18e1df76e557e46062",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-02-26T03:56:41.966Z",
+            "modified": "2024-02-26T03:56:41.966Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"Programacion\",\n  \"maestro\":\"65dc0aae70e335781cd17c95\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f1f38c1d-caa5-48df-8ab3-25d7e843294e",
+            "colId": "97cb1a55-3b45-480b-9079-dce5d283de27",
+            "containerId": "",
+            "name": "deleteCursos",
+            "url": "http://localhost:3000/api/cursos/65dc0b18e1df76e557e46062",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-02-26T03:59:49.711Z",
+            "modified": "2024-02-26T03:59:49.711Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"maestro\":\"65dc0aae70e335781cd17c95\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
